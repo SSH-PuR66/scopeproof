@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "description": "Local semantic evidence review and human-approved PayPal Sandbox invoice drafts",
-  "engines": {"node": ">=22"},
+  "engines": {"node": ">=22.9.0"},
   "scripts": {
     "start": "node --env-file-if-exists=.env server.mjs",
     "test": "node --test tests/*.test.mjs",

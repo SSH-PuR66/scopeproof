@@ -6,7 +6,7 @@ ScopeProof ranks supplied evidence excerpts against each milestone using a real 
 
 ## Run
 
-Requirements: Node.js 22 or newer, npm, and internet for initial dependency/model downloads.
+Requirements: Node.js 22.9.0 or newer, npm, and internet for initial dependency/model downloads.
 
 ```powershell
 npm ci
