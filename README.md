@@ -27,7 +27,7 @@ The default `fixture` mode exercises the review-to-draft flow without any PayPal
 
 For PayPal Sandbox, copy `.env.example` to `.env`, set `PAYPAL_MODE=paypal-sandbox`, and supply credentials for your own sandbox application plus its merchant email. Use a sandbox recipient account in the UI. Restart the app. Never commit `.env` or publish secrets; judges can configure their own sandbox app. Only the fixed `api-m.sandbox.paypal.com` host is supported. There is no production mode, invoice-send endpoint, payment capture, refund, or bank transfer.
 
-PayPal configuration and an actual Sandbox round trip have **not yet been verified**. Mocked HTTP tests are adapter tests, not proof of a working PayPal account or payment. Configuration alone does not prove the merchant is eligible for Invoicing.
+A real Sandbox round trip was verified on November 5, 2026: OAuth returned 200, one draft creation returned 201, and its read-back returned 200. The checked draft remained `DRAFT`, with the expected line item and USD 1.00 total. Actual local MiniLM inference ran in the same check. See the [sanitized integration receipt](receipts/sandbox-check.json), which identifies the tested source commit. The invoice was not sent or paid. This verifies that configured Sandbox account and test case, not every account, production deployment or browser workflow.
 
 ## What the AI can and cannot establish
 
@@ -46,7 +46,8 @@ If a Sandbox create/read-back result is ambiguous, that key is held as `UNKNOWN`
 - `npm test`: executable domain, HTTP and mocked PayPal checks.
 - `npm run check:ai`: actual pinned MiniLM inference, exact-source retrieval and a negation counterexample; writes `receipts/ai-check.json`.
 - UI source checks do not replace a visual, keyboard or screen-reader review. Those reviews remain unverified.
-- Submission remains pending: participant eligibility, real Sandbox integration, public demonstration video and final entry. No credentials are included in this package.
+- A real Sandbox create/read-back has passed; the browser workflow and accessibility still require review.
+- Submission remains pending: participant eligibility, public functioning demonstration video and final entry. No credentials are included in this package.
 
 ## Sources and licenses
 

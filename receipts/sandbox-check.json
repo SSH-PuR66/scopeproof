@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "kind": "real-paypal-sandbox-draft-integration",
+  "status": "SUCCESS",
+  "startedAt": "2026-11-05T21:15:13.521Z",
+  "finishedAt": "2026-11-05T21:15:16.094Z",
+  "testedCommit": "8cdc3b7066b1deaab55489b5a157a83093df8366",
+  "sourceHashes": {
+    "server.mjs": "805f733a5f14f6c2b9ffb0ccbeaee7c756d2fa0fb1a27c768f47d39f94bdab63",
+    "lib/ai.mjs": "4906b2919b0db7b0fb704ad43f29baab4bb63ee1b9ed340adbb05f0a050f9cd0",
+    "lib/domain.mjs": "fb771f2ffc0d8d5c6586d388a8f2c31e8da34d12cc61762b0eb4bf861b4ee05a",
+    "lib/paypal.mjs": "fb9378e839fb86f95f370012444140f96baa45ab45b06f000d93b874ba402248",
+    "package.json": "a860eb08a85c5eb84d67431e939433b1065ec5eb1b34add00d6c777c32196d57",
+    "package-lock.json": "8f4693a9ee71190c0a868472b18a297726d97b6c927b0a2aefff2b2559cca883"
+  },
+  "verificationHarness": {
+    "name": "sandbox-check.mjs",
+    "sha256": "8629db62bd7367f58ba07dd40b9d4ef65bed86b15d163699a1a4548840e40977",
+    "includedInPublicRepository": false
+  },
+  "nodeVersion": "v24.16.0",
+  "mode": "paypal-sandbox",
+  "model": {
+    "modelId": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "mode": "semantic",
+    "inference": "real local CPU model"
+  },
+  "invoice": {
+    "status": "DRAFT",
+    "totalCents": 100,
+    "currency": "USD",
+    "createAndReadbackVerified": true,
+    "sent": false
+  },
+  "providerHost": "api-m.sandbox.paypal.com",
+  "providerCalls": [
+    {
+      "method": "POST",
+      "route": "/v1/oauth2/token",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "route": "/v2/invoicing/invoices",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "route": "/v2/invoicing/invoices/{invoiceId}",
+      "status": 200
+    }
+  ],
+  "providerCallCounts": {
+    "oauthPost": 1,
+    "invoiceCreatePost": 1,
+    "invoiceReadGet": 1
+  },
+  "sends": 0,
+  "payments": 0,
+  "productionRequests": 0,
+  "automaticRetry": false,
+  "verification": {
+    "method": "Read-only independent consistency review of execution evidence and current source hashes; no API replay.",
+    "intentAndReceiptProvenanceMatch": true,
+    "sourceHashesMatchAtReview": true,
+    "readbackMatchedCreatedInvoice": true,
+    "realModelEvidence": "The exercised app uses its default embedding function. The pinned CPU model sets ready only after inference; the run checked semantic mode, revision, readiness, and evidence match.",
+    "loopbackCleanup": "Source calls bounded server cleanup before receipt persistence. Independent post-exit socket observation is not recorded."
+  },
+  "limitations": [
+    "This records one successful synthetic CLI/API attempt and does not erase earlier failed attempts.",
+    "The total is an unsent Sandbox draft amount, not revenue or a payment.",
+    "The synthetic evidence repeats its criterion; this checks inference integration, not semantic accuracy or completion of real work.",
+    "HTTP records describe admitted client calls and observed responses, not general service reliability.",
+    "No UI interaction, video, competition entry, award, or payment is established by this receipt.",
+    "The historical testedCommit and source hashes identify the executed sources; later documentation or receipt commits were not executed in this run."
+  ]
+}

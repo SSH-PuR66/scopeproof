@@ -9,7 +9,7 @@ Freelance work often ends with an awkward handoff: a list of promised features, 
 ## What it does
 You enter milestone criteria, prices and short delivery excerpts. A local embedding model retrieves relevant excerpts. The application displays the original wording and warns about simple explicit negatives. Nothing is accepted automatically. After you review and select milestones, the server can create and read back a PayPal Sandbox draft for those exact line items.
 
-The default demonstration mode uses clearly marked local invoice fixtures; it does not create a PayPal resource. The actual Sandbox adapter is implemented but its live sandbox round trip is not yet verified. This draft must not be submitted as a fully integrated demonstration until that check is complete.
+The default demonstration mode uses clearly marked local invoice fixtures; it does not create a PayPal resource. A separate real Sandbox integration check passed on November 5, 2026: actual local inference, OAuth 200, one draft creation 201, and read-back 200 with verified items and USD 1.00 total. The draft was not sent or paid. The sanitized receipt is in `receipts/sandbox-check.json`. A functioning public demonstration video is still required before this entry is complete.
 
 ## How we built it
 Node.js serves a small plain-JavaScript application. Transformers.js runs a pinned, quantized MiniLM model locally. Monetary amounts stay in integer cents. A source digest binds the selected prices and evidence to the draft. The PayPal adapter reads the created draft back and checks the returned amount, currency, line items and status. Ambiguous responses produce an unknown state rather than an invented receipt.
@@ -20,7 +20,7 @@ Development used AI assistance, executable tests and an independent implementati
 An actual model run gave a similarity of 0.9687 to a statement that negated the requested behavior. Similarity was useful for finding the relevant excerpt, but insufficient for accepting the work. The final workflow makes that distinction visible and reserves acceptance for a person.
 
 ## Current limitations
-The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. No end-to-end Sandbox receipt, visual/accessibility validation, hosted demonstration or video is claimed yet.
+The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. The successful Sandbox integration check does not establish visual/accessibility validation. A hosted demonstration and public video remain absent.
 
 Public source repository: https://github.com/SSH-PuR66/scopeproof (MIT). This publication does not constitute a contest entry.
 
@@ -33,4 +33,4 @@ Public source repository: https://github.com/SSH-PuR66/scopeproof (MIT). This pu
 6. End with the actual tests and limitations. Record functioning UI footage; this outline is not a video.
 
 ## Unresolved entry fields
-Participant eligibility and required attestations; public YouTube video URL; actual Sandbox validation receipt. No fields should be represented as complete without evidence.
+Participant eligibility and required attestations; public YouTube video URL and functioning visual demonstration. No fields should be represented as complete without evidence.
