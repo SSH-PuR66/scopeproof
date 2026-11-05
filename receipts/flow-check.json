@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "checkedAt": "2026-11-05T20:37:13.182Z",
+  "assets": [
+    {
+      "path": "/",
+      "status": 200,
+      "bytes": 6838
+    },
+    {
+      "path": "/app.js",
+      "status": 200,
+      "bytes": 21810
+    },
+    {
+      "path": "/styles.css",
+      "status": 200,
+      "bytes": 13040
+    }
+  ],
+  "model": {
+    "modelId": "Xenova/all-MiniLM-L6-v2",
+    "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+    "ready": true,
+    "mode": "semantic"
+  },
+  "matches": [
+    {
+      "milestoneId": "parser",
+      "evidenceId": "parser-test",
+      "quote": "The CSV importer rejects malformed dates.",
+      "similarity": 1,
+      "signal": "Related excerpt — human review required"
+    },
+    {
+      "milestoneId": "receipt",
+      "evidenceId": "receipt-note",
+      "quote": "JSON receipt export is not implemented. Source hashes are missing.",
+      "similarity": 0.7025,
+      "signal": "Possible contradiction — read the excerpt"
+    }
+  ],
+  "draft": {
+    "id": "LOCAL-800c56060095",
+    "mode": "fixture",
+    "status": "DRAFT",
+    "totalCents": 18000,
+    "currency": "USD",
+    "source": "local-fixture"
+  },
+  "repeatSameDraft": true,
+  "modelInference": "actual local CPU model",
+  "paypalCalls": "none; local fixture",
+  "notChecked": [
+    "rendered UI",
+    "keyboard or screen reader",
+    "real PayPal Sandbox",
+    "submission",
+    "award",
+    "payout"
+  ]
+}

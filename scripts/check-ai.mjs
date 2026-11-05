@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {mkdir,writeFile} from 'node:fs/promises';
+import {embed,modelId,revision} from '../lib/ai.mjs';
+import {analyze} from '../lib/domain.mjs';
+const started=Date.now();
+const a=await analyze({milestones:[{id:'csv',title:'CSV import',criterion:'The CSV importer rejects malformed dates.',amountCents:25000}],evidence:[{id:'positive',text:'The CSV importer rejects malformed dates.'},{id:'unrelated',text:'The garden has three red flowers.'},{id:'negative',text:'The CSV importer does not reject malformed dates.'}]},embed);
+assert.equal(a.matches[0].evidenceId,'positive');assert.match(a.matches[0].signal,/human review/);
+const negative=await analyze({milestones:[{id:'csv',title:'CSV import',criterion:'The CSV importer rejects malformed dates.',amountCents:25000}],evidence:[{id:'negative',text:'The CSV importer does not reject malformed dates.'}]},embed);
+assert.match(negative.matches[0].signal,/contradiction/);
+const receipt={status:'PASS',modelId,revision,elapsedMs:Date.now()-started,networkScope:'public model weights downloaded; excerpts inferred locally',positive:a.matches[0],negativeControl:negative.matches[0],limitations:['Similarity is relevance, not entailment, truth, execution, or acceptance.','Contradiction flag is a simple English word heuristic, not a complete contradiction detector.','Model may truncate long excerpts.','This check does not contact PayPal.']};
+await mkdir('receipts',{recursive:true});await writeFile('receipts/ai-check.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt,null,2));

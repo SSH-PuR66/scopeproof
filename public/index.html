@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142b38">
+  <title>ScopeProof — evidence before the invoice</title>
+  <meta name="description" content="Review milestone evidence, make a human decision, and prepare a draft invoice in PayPal Sandbox.">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to workspace</a>
+  <header class="site-header wrap">
+    <a href="/" class="brand" aria-label="ScopeProof home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>ScopeProof<span class="brand-dot">.</span></a>
+    <div class="header-meta"><span class="eyebrow">A deliberate handoff</span><span id="mode-badge" class="badge neutral">Connecting</span></div>
+  </header>
+
+  <main>
+    <section class="hero wrap" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow accent">Evidence → human review → draft</p>
+        <h1 id="page-title">Good work deserves<br><em>a clear handoff.</em></h1>
+        <p class="intro">Bring the scope and the evidence together. Review the match yourself. Prepare an invoice for the milestones you accept.</p>
+        <p class="scope-note">This demo creates drafts only. No invoice is sent. No money moves. No escrow.</p>
+      </div>
+      <aside class="session-card" aria-label="Connection and execution status">
+        <div class="session-heading"><span class="status-dot" id="connection-dot" aria-hidden="true"></span><h2>Session details</h2></div>
+        <dl class="session-list">
+          <div><dt>Environment</dt><dd id="environment">Checking…</dd></div>
+          <div><dt>Matching model</dt><dd id="model-name">Not verified</dd></div>
+          <div><dt>Merchant config</dt><dd id="merchant-status">Not verified</dd></div>
+        </dl>
+        <p id="session-note" class="small">Checking the local API. No analysis has run.</p>
+        <button type="button" id="refresh-status" class="text-button">Refresh connection <span aria-hidden="true">↻</span></button>
+      </aside>
+    </section>
+
+    <div class="wrap"><div id="status-message" class="notice" role="status" aria-live="polite" aria-atomic="true">Connecting to the local API…</div><div id="error-message" class="notice error hidden" role="alert" aria-atomic="true"></div></div>
+
+    <section id="workspace" class="workspace wrap" aria-labelledby="workspace-title">
+      <div class="section-heading"><div><p class="eyebrow accent">01 / Define the handoff</p><h2 id="workspace-title">What was promised. What was delivered.</h2></div><span class="section-tag">Editable example</span></div>
+      <form id="analysis-form">
+        <fieldset id="inputs-fieldset">
+          <legend class="sr-only">Milestone and evidence inputs</legend>
+          <div class="input-columns">
+            <section class="panel" aria-labelledby="milestones-title">
+              <div class="panel-heading"><div><h3 id="milestones-title">The milestones</h3><p>Keep each acceptance criterion specific.</p></div><span class="count-pill">3</span></div>
+              <div id="milestone-inputs" class="input-stack"></div>
+            </section>
+            <section class="panel" aria-labelledby="evidence-title">
+              <div class="panel-heading"><div><h3 id="evidence-title">The evidence</h3><p>Paste the actual report, notes, or test output.</p></div><span class="count-pill">3</span></div>
+              <div id="evidence-inputs" class="input-stack"></div>
+              <p class="panel-footnote">Example evidence includes an explicit failure and no accessibility result. A similar phrase can still describe unfinished work.</p>
+            </section>
+          </div>
+        </fieldset>
+        <div class="analyze-bar">
+          <p><strong>Find supporting passages.</strong><br>Semantic similarity is a review aid, not proof of completion.</p>
+          <button id="analyze-button" type="submit" class="button primary" disabled><span id="analyze-button-label">Analyze evidence</span><span aria-hidden="true">↗</span></button>
+        </div>
+      </form>
+    </section>
+
+    <section class="review-section wrap" aria-labelledby="review-title">
+      <div class="section-heading"><div><p class="eyebrow accent">02 / Make the decision</p><h2 id="review-title">The final call is yours.</h2></div><span id="review-state" class="section-tag">Awaiting analysis</span></div>
+      <div id="review-empty" class="empty-state"><span class="empty-icon" aria-hidden="true">≋</span><div><h3>A match is the start of a review.</h3><p>Run the analysis to see quoted evidence. Read the criterion and the full evidence, then accept each milestone yourself.</p></div></div>
+      <div id="review-results" class="review-grid hidden"></div>
+      <p id="analysis-provenance" class="provenance hidden"></p>
+    </section>
+
+    <section class="invoice-section wrap" aria-labelledby="invoice-title">
+      <div class="invoice-copy"><p class="eyebrow accent">03 / Prepare the draft</p><h2 id="invoice-title">Only what you<br>choose to accept.</h2><p>Selected milestones become invoice line items. Creating a draft does not send it, collect payment, or certify delivery.</p><p id="invoice-environment-note" class="small">The environment must be confirmed before drafting.</p></div>
+      <div class="invoice-panel">
+        <form id="invoice-form">
+          <div class="total-line"><div><span class="eyebrow">Selected total · USD</span><strong id="selected-total">$0.00</strong></div><span id="selected-count" class="badge neutral">0 of 3 accepted</span></div>
+          <label for="buyer-email">Recipient email <span class="optional-note">stored on the draft only</span></label>
+          <input id="buyer-email" type="email" autocomplete="email" maxlength="254" placeholder="buyer@example.com" required aria-describedby="email-help">
+          <p id="email-help" class="field-help">Use a test address for this demo. No email is sent by ScopeProof.</p>
+          <button id="invoice-button" class="button primary full-width" type="submit" disabled><span id="invoice-button-label">Create draft invoice</span><span aria-hidden="true">↗</span></button>
+          <p id="invoice-blocker" class="field-help">Analyze evidence and accept at least one milestone.</p>
+        </form>
+        <section id="invoice-result" class="draft-result hidden" aria-labelledby="draft-title" tabindex="-1"></section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer wrap"><span class="brand footer-brand">ScopeProof<span class="brand-dot">.</span></span><p>Evidence stays visible. Approval stays human.</p><span>Sandbox demonstration · No live payments</span></footer>
+</body>
+</html>
+

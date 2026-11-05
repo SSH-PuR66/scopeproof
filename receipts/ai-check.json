@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "modelId": "Xenova/all-MiniLM-L6-v2",
+  "revision": "751bff37182d3f1213fa05d7196b954e230abad9",
+  "elapsedMs": 6836,
+  "networkScope": "public model weights downloaded; excerpts inferred locally",
+  "positive": {
+    "milestoneId": "csv",
+    "evidenceId": "positive",
+    "quote": "The CSV importer rejects malformed dates.",
+    "similarity": 1,
+    "signal": "Related excerpt — human review required"
+  },
+  "negativeControl": {
+    "milestoneId": "csv",
+    "evidenceId": "negative",
+    "quote": "The CSV importer does not reject malformed dates.",
+    "similarity": 0.9687,
+    "signal": "Possible contradiction — read the excerpt"
+  },
+  "limitations": [
+    "Similarity is relevance, not entailment, truth, execution, or acceptance.",
+    "Contradiction flag is a simple English word heuristic, not a complete contradiction detector.",
+    "Model may truncate long excerpts.",
+    "This check does not contact PayPal."
+  ]
+}
