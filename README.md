@@ -2,6 +2,8 @@
 
 **Turn delivery evidence into a reviewed invoice draft.** A local-first prototype for the 2026 PayPal AI Hackathon, prepared for Sergio Rodriguez. AI-assisted implementation; no award, client acceptance, or live payment is claimed.
 
+Source repository: [SSH-PuR66/scopeproof](https://github.com/SSH-PuR66/scopeproof), published under MIT. Repository publication is not a hackathon entry or an award.
+
 ScopeProof ranks supplied evidence excerpts against each milestone using a real MiniLM embedding model on your CPU. It displays the original text, similarity and a simple contradiction warning. You decide which milestones to include. The server builds a PayPal Sandbox invoice only from the reviewed snapshot and your explicit selection, then reads the invoice back to verify status, line items and amount.
 
 ## Run
@@ -44,7 +46,7 @@ If a Sandbox create/read-back result is ambiguous, that key is held as `UNKNOWN`
 - `npm test`: executable domain, HTTP and mocked PayPal checks.
 - `npm run check:ai`: actual pinned MiniLM inference, exact-source retrieval and a negation counterexample; writes `receipts/ai-check.json`.
 - UI source checks do not replace a visual, keyboard or screen-reader review. Those reviews remain unverified.
-- Submission remains pending: participant eligibility, real Sandbox integration, public repository, public demonstration video and final entry. No credentials are included in this package.
+- Submission remains pending: participant eligibility, real Sandbox integration, public demonstration video and final entry. No credentials are included in this package.
 
 ## Sources and licenses
 

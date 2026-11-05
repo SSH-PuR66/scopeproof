@@ -20,7 +20,9 @@ Development used AI assistance, executable tests and an independent implementati
 An actual model run gave a similarity of 0.9687 to a statement that negated the requested behavior. Similarity was useful for finding the relevant excerpt, but insufficient for accepting the work. The final workflow makes that distinction visible and reserves acceptance for a person.
 
 ## Current limitations
-The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. No end-to-end Sandbox receipt, visual/accessibility validation, hosted demonstration, public repository or video is claimed yet.
+The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. No end-to-end Sandbox receipt, visual/accessibility validation, hosted demonstration or video is claimed yet.
+
+Public source repository: https://github.com/SSH-PuR66/scopeproof (MIT). This publication does not constitute a contest entry.
 
 ## Demonstration plan — under three minutes
 1. Show three synthetic milestones: a supported parser delivery, unfinished receipt export and missing accessibility review.
@@ -31,4 +33,4 @@ The three-milestone UI is a prototype. Contradiction detection is only a word he
 6. End with the actual tests and limitations. Record functioning UI footage; this outline is not a video.
 
 ## Unresolved entry fields
-Participant eligibility and required attestations; public repository URL; public YouTube video URL; actual Sandbox validation receipt. No fields should be represented as complete without evidence.
+Participant eligibility and required attestations; public YouTube video URL; actual Sandbox validation receipt. No fields should be represented as complete without evidence.
