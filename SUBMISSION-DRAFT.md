@@ -20,7 +20,7 @@ Development used AI assistance, executable tests and an independent implementati
 An actual model run gave a similarity of 0.9687 to a statement that negated the requested behavior. Similarity was useful for finding the relevant excerpt, but insufficient for accepting the work. The final workflow makes that distinction visible and reserves acceptance for a person.
 
 ## Current limitations
-The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. The successful Sandbox integration check does not establish visual/accessibility validation. A hosted demonstration and public video remain absent.
+The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. Native Edge observations confirmed real semantic matching and the $180 total when only the synthetic parser milestone was selected. The complete UI invoice flow and accessibility remain unverified; the separate $1 API check does not establish them. A hosted demonstration and public video remain absent.
 
 Public source repository: https://github.com/SSH-PuR66/scopeproof (MIT). This publication does not constitute a contest entry.
 
@@ -29,7 +29,7 @@ Public source repository: https://github.com/SSH-PuR66/scopeproof (MIT). This pu
 2. Run real local semantic matching and inspect the original excerpts.
 3. Explain why a high similarity score can still mean unfinished work.
 4. Select only a milestone supported by the demonstrated evidence.
-5. With configured sandbox credentials, create a draft and show its verified Sandbox ID and total. Do not record fixture output as a real API response.
+5. With configured sandbox credentials, create one Sandbox draft and show its returned DRAFT status, total and source, with the draft identifier and recipient redacted. Do not record fixture output as a real API response.
 6. End with the actual tests and limitations. Record functioning UI footage; this outline is not a video.
 
 ## Unresolved entry fields
