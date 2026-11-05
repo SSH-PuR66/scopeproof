@@ -9,7 +9,9 @@ Freelance work often ends with an awkward handoff: a list of promised features, 
 ## What it does
 You enter milestone criteria, prices and short delivery excerpts. A local embedding model retrieves relevant excerpts. The application displays the original wording and warns about simple explicit negatives. Nothing is accepted automatically. After you review and select milestones, the server can create and read back a PayPal Sandbox draft for those exact line items.
 
-The default demonstration mode uses clearly marked local invoice fixtures; it does not create a PayPal resource. A separate real Sandbox integration check passed on November 5, 2026: actual local inference, OAuth 200, one draft creation 201, and read-back 200 with verified items and USD 1.00 total. The draft was not sent or paid. The sanitized receipt is in `receipts/sandbox-check.json`. A functioning public demonstration video is still required before this entry is complete.
+The default demonstration mode uses clearly marked local invoice fixtures; it does not create a PayPal resource. A real Sandbox integration check passed on November 5, 2026: actual local inference, OAuth 200, one draft creation 201, and read-back 200 with verified items and USD 1.00 total. The draft was not sent or paid. The sanitized receipt is in `receipts/sandbox-check.json`.
+
+A separate recorded Edge walkthrough used actual local matching, selected only the synthetic parser milestone, and displayed a PayPal Sandbox draft with DRAFT status and USD 180.00 total. Editing its criterion then cleared the review and selection while leaving the existing draft unchanged. This UI observation does not independently capture provider HTTP statuses; those belong to the separate one-dollar check. Neither draft represents revenue. A public YouTube URL for the functioning demonstration is still required before this entry is complete.
 
 ## How we built it
 Node.js serves a small plain-JavaScript application. Transformers.js runs a pinned, quantized MiniLM model locally. Monetary amounts stay in integer cents. A source digest binds the selected prices and evidence to the draft. The PayPal adapter reads the created draft back and checks the returned amount, currency, line items and status. Ambiguous responses produce an unknown state rather than an invented receipt.
@@ -20,7 +22,7 @@ Development used AI assistance, executable tests and an independent implementati
 An actual model run gave a similarity of 0.9687 to a statement that negated the requested behavior. Similarity was useful for finding the relevant excerpt, but insufficient for accepting the work. The final workflow makes that distinction visible and reserves acceptance for a person.
 
 ## Current limitations
-The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. Native Edge observations confirmed real semantic matching and the $180 total when only the synthetic parser milestone was selected. The complete UI invoice flow and accessibility remain unverified; the separate $1 API check does not establish them. A hosted demonstration and public video remain absent.
+The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. The recorded Edge scenario covered analysis, human selection, the displayed Sandbox draft result and invalidation after an edit. Full keyboard and screen-reader accessibility remain unverified. A hosted demonstration and public video remain absent; local setup instructions are in the repository.
 
 Public source repository: https://github.com/SSH-PuR66/scopeproof (MIT). This publication does not constitute a contest entry.
 

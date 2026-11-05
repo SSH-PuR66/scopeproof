@@ -27,7 +27,9 @@ The default `fixture` mode exercises the review-to-draft flow without any PayPal
 
 For PayPal Sandbox, copy `.env.example` to `.env`, set `PAYPAL_MODE=paypal-sandbox`, and supply credentials for your own sandbox application plus its merchant email. Use a sandbox recipient account in the UI. Restart the app. Never commit `.env` or publish secrets; judges can configure their own sandbox app. Only the fixed `api-m.sandbox.paypal.com` host is supported. There is no production mode, invoice-send endpoint, payment capture, refund, or bank transfer.
 
-A real Sandbox round trip was verified on November 5, 2026: OAuth returned 200, one draft creation returned 201, and its read-back returned 200. The checked draft remained `DRAFT`, with the expected line item and USD 1.00 total. Actual local MiniLM inference ran in the same check. See the [sanitized integration receipt](receipts/sandbox-check.json), which identifies the tested source commit. The invoice was not sent or paid. This verifies that configured Sandbox account and test case, not every account, production deployment or browser workflow.
+A real Sandbox round trip was verified on November 5, 2026: OAuth returned 200, one draft creation returned 201, and its read-back returned 200. The checked draft remained `DRAFT`, with the expected line item and USD 1.00 total. Actual local MiniLM inference ran in the same check. See the [sanitized integration receipt](receipts/sandbox-check.json), which identifies the tested source commit. The invoice was not sent or paid. This verifies that configured Sandbox account and test case, not every account or production deployment.
+
+A separate recorded Edge walkthrough showed real analysis, selection of the synthetic parser milestone, and a `paypal-sandbox` result with `DRAFT` status and USD 180.00 total. A later criterion edit cleared the selection and invalidated the review without changing the existing draft. Provider HTTP statuses were not independently captured for that UI scenario; the one-dollar API receipt is separate evidence. The video is being prepared for public release. No money moved in either case.
 
 ## What the AI can and cannot establish
 
@@ -45,8 +47,8 @@ If a Sandbox create/read-back result is ambiguous, that key is held as `UNKNOWN`
 
 - `npm test`: executable domain, HTTP and mocked PayPal checks.
 - `npm run check:ai`: actual pinned MiniLM inference, exact-source retrieval and a negation counterexample; writes `receipts/ai-check.json`.
-- UI source checks do not replace a visual, keyboard or screen-reader review. Those reviews remain unverified.
-- A real Sandbox create/read-back has passed; the browser workflow and accessibility still require review.
+- The recorded Edge scenario covers the demonstrated analysis, selection, Sandbox draft result and input-edit invalidation. It does not establish complete keyboard or screen-reader accessibility, which remain unverified.
+- A real Sandbox API create/read-back has passed in the separate one-dollar case; provider request counts and statuses are not independently established by the UI recording.
 - Submission remains pending: participant eligibility, public functioning demonstration video and final entry. No credentials are included in this package.
 
 ## Sources and licenses
