@@ -4,7 +4,7 @@
 
 Source repository: [SSH-PuR66/scopeproof](https://github.com/SSH-PuR66/scopeproof), published under MIT. Repository publication is not a hackathon entry or an award.
 
-Public demonstration: [ScopeProof — evidence to invoice, with human review](https://youtu.be/LAmobU_wShs) (2:18, English captions, synthetic examples). The video is public; the Devpost entry has not been submitted.
+Public demonstration: [ScopeProof — evidence to invoice, with human review](https://youtu.be/LAmobU_wShs) (2:18, English captions, synthetic examples). Published materials alone are not proof of contest submission or an award.
 
 ScopeProof ranks supplied evidence excerpts against each milestone using a real MiniLM embedding model on your CPU. It displays the original text, similarity and a simple contradiction warning. You decide which milestones to include. The server builds a PayPal Sandbox invoice only from the reviewed snapshot and your explicit selection, then reads the invoice back to verify status, line items and amount.
 
@@ -51,7 +51,7 @@ If a Sandbox create/read-back result is ambiguous, that key is held as `UNKNOWN`
 - `npm run check:ai`: actual pinned MiniLM inference, exact-source retrieval and a negation counterexample; writes `receipts/ai-check.json`.
 - The recorded Edge scenario covers the demonstrated analysis, selection, Sandbox draft result and input-edit invalidation. It does not establish complete keyboard or screen-reader accessibility, which remain unverified.
 - A real Sandbox API create/read-back has passed in the separate one-dollar case; provider request counts and statuses are not independently established by the UI recording.
-- The public functioning demonstration video is available. The participant has supplied solo-entry, conflict-of-interest and material-rights confirmations; these are self-reports, not an organizer eligibility decision. Devpost sign-in, the final form and acceptance of the contest terms remain pending. No entry or award is claimed, and no credentials are included in this package.
+- The public functioning demonstration video is available. Participant confirmations are self-reports, not an organizer eligibility decision. Registration, a saved draft, a submitted entry and an award require separate evidence; this source package is not a submission receipt. No credentials are included.
 
 ## Sources and licenses
 
