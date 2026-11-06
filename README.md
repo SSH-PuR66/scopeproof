@@ -6,6 +6,8 @@ Source repository: [SSH-PuR66/scopeproof](https://github.com/SSH-PuR66/scopeproo
 
 Public demonstration: [ScopeProof — evidence to invoice, with human review](https://youtu.be/LAmobU_wShs) (2:18, English captions, synthetic examples). Published materials alone are not proof of contest submission or an award.
 
+Contest status, November 6, 2026: [ScopeProof on Devpost](https://devpost.com/software/scopeproof-1hl2ep) is **submitted** to PayPal AI Hackathon, confirmed by Devpost's project page and submission-confirmation email. Award and payment are not confirmed.
+
 ScopeProof ranks supplied evidence excerpts against each milestone using a real MiniLM embedding model on your CPU. It displays the original text, similarity and a simple contradiction warning. You decide which milestones to include. The server builds a PayPal Sandbox invoice only from the reviewed snapshot and your explicit selection, then reads the invoice back to verify status, line items and amount.
 
 ## Run
@@ -51,7 +53,7 @@ If a Sandbox create/read-back result is ambiguous, that key is held as `UNKNOWN`
 - `npm run check:ai`: actual pinned MiniLM inference, exact-source retrieval and a negation counterexample; writes `receipts/ai-check.json`.
 - The recorded Edge scenario covers the demonstrated analysis, selection, Sandbox draft result and input-edit invalidation. It does not establish complete keyboard or screen-reader accessibility, which remain unverified.
 - A real Sandbox API create/read-back has passed in the separate one-dollar case; provider request counts and statuses are not independently established by the UI recording.
-- The public functioning demonstration video is available. Participant confirmations are self-reports, not an organizer eligibility decision. Registration, a saved draft, a submitted entry and an award require separate evidence; this source package is not a submission receipt. No credentials are included.
+- The public functioning demonstration video is available, and Devpost has confirmed project submission. Participant confirmations remain self-reports, not an organizer eligibility or award decision. No award or payment is confirmed, and no credentials are included.
 
 ## Sources and licenses
 

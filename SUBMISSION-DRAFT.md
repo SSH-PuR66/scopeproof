@@ -1,4 +1,4 @@
-# ScopeProof — review draft, not submitted
+# ScopeProof — submitted to PayPal AI Hackathon
 
 ## Tagline
 Match the evidence. Review the milestone. Draft the invoice.
@@ -6,6 +6,8 @@ Match the evidence. Review the milestone. Draft the invoice.
 Public demonstration: https://youtu.be/LAmobU_wShs (2:18, English captions, synthetic examples).
 
 Public source and local setup: https://github.com/SSH-PuR66/scopeproof (MIT).
+
+Submitted project: https://devpost.com/software/scopeproof-1hl2ep. Award and payment are not confirmed.
 
 ## Inspiration
 Freelance handoffs connect three things that often live apart: promised milestones, delivery evidence and an invoice. An AI summary can obscure an unfinished item if it sounds more certain than the source. ScopeProof keeps the original excerpt beside the human decision and ties the invoice draft to that reviewed scope.
@@ -38,4 +40,4 @@ Validate the workflow with freelancers, add durable review and reconciliation st
 JavaScript, Node.js, HTML, CSS, Hugging Face Transformers.js, Xenova/all-MiniLM-L6-v2, PayPal Invoicing API, PayPal Sandbox.
 
 ## Entry status — not part of the project story
-The video and source repository are public. Hackathon registration is confirmed; project submission is not. This document contains prepared project text, not a submission receipt or an organizer's eligibility decision. Final submission requires completing and checking the actual Devpost form.
+Devpost confirmed project submission on November 6, 2026 through the project page and a submission-confirmation email. The video and source repository are public. Submission does not establish an organizer eligibility decision, award or payment.
