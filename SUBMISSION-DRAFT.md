@@ -38,4 +38,4 @@ Validate the workflow with freelancers, add durable review and reconciliation st
 JavaScript, Node.js, HTML, CSS, Hugging Face Transformers.js, Xenova/all-MiniLM-L6-v2, PayPal Invoicing API, PayPal Sandbox.
 
 ## Entry status — not part of the project story
-The video and source repository are public. The participant supplied solo-entry, conflict-of-interest and material-rights confirmations; these are self-reports, not organizer approval. Devpost sign-in and the actual form remain unfinished. Final contest terms have not been accepted, and the entry has not been submitted.
+The video and source repository are public. Hackathon registration is confirmed; project submission is not. This document contains prepared project text, not a submission receipt or an organizer's eligibility decision. Final submission requires completing and checking the actual Devpost form.
