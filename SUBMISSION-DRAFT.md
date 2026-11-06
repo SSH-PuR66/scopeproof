@@ -3,36 +3,39 @@
 ## Tagline
 Match the evidence. Review the milestone. Draft the invoice.
 
+Public demonstration: https://youtu.be/LAmobU_wShs (2:18, English captions, synthetic examples).
+
+Public source and local setup: https://github.com/SSH-PuR66/scopeproof (MIT).
+
 ## Inspiration
-Freelance work often ends with an awkward handoff: a list of promised features, scattered delivery notes, and an invoice that does not explain what was accepted. An AI summary can make that worse if it sounds certain while missing a failed test or an unfinished item. ScopeProof puts the original evidence beside the decision and keeps the invoice tied to the reviewed scope.
+Freelance handoffs connect three things that often live apart: promised milestones, delivery evidence and an invoice. An AI summary can obscure an unfinished item if it sounds more certain than the source. ScopeProof keeps the original excerpt beside the human decision and ties the invoice draft to that reviewed scope.
 
 ## What it does
-You enter milestone criteria, prices and short delivery excerpts. A local embedding model retrieves relevant excerpts. The application displays the original wording and warns about simple explicit negatives. Nothing is accepted automatically. After you review and select milestones, the server can create and read back a PayPal Sandbox draft for those exact line items.
+Enter milestone criteria, prices and delivery excerpts. A local embedding model retrieves relevant excerpts; the interface displays their original wording, similarity and simple explicit-negation warnings. The reviewer chooses which milestones to include. The server creates and reads back a PayPal Sandbox invoice draft for that selection. Editing the inputs invalidates the review without altering an existing draft.
 
-The default demonstration mode uses clearly marked local invoice fixtures; it does not create a PayPal resource. A real Sandbox integration check passed on November 5, 2026: actual local inference, OAuth 200, one draft creation 201, and read-back 200 with verified items and USD 1.00 total. The draft was not sent or paid. The sanitized receipt is in `receipts/sandbox-check.json`.
+The default fixture mode is explicitly simulated. Configured Sandbox mode uses the real PayPal Invoicing API. Drafts are not sent, and the app does not capture payments or transfer money. A review checkbox is the operator's decision, not client acceptance.
 
-A separate recorded Edge walkthrough used actual local matching, selected only the synthetic parser milestone, and displayed a PayPal Sandbox draft with DRAFT status and USD 180.00 total. Editing its criterion then cleared the review and selection while leaving the existing draft unchanged. This UI observation does not independently capture provider HTTP statuses; those belong to the separate one-dollar check. Neither draft represents revenue. A public YouTube URL for the functioning demonstration is still required before this entry is complete.
+## How I built it
+Node.js 22.9+ serves a plain-JavaScript interface. Transformers.js runs a pinned, quantized MiniLM model locally on the CPU. Amounts stay in integer USD cents, and a source digest binds evidence and prices to the reviewed snapshot. The PayPal adapter checks the returned status, currency, amount and line items. Ambiguous create/read-back results are held as UNKNOWN, blocking a blind retry in that process.
 
-## How we built it
-Node.js serves a small plain-JavaScript application. Transformers.js runs a pinned, quantized MiniLM model locally. Monetary amounts stay in integer cents. A source digest binds the selected prices and evidence to the draft. The PayPal adapter reads the created draft back and checks the returned amount, currency, line items and status. Ambiguous responses produce an unknown state rather than an invented receipt.
+Development used AI assistance, executable tests and independent implementation review. The repository documents local setup and includes a sanitized Sandbox receipt; credentials and model weights are not included.
 
-Development used AI assistance, executable tests and an independent implementation review. No user work history, customer impact or business revenue is inferred from this prototype.
+## Challenges I ran into
+A real inference check scored “does not reject malformed dates” at 0.9687 against “rejects malformed dates.” High similarity could retrieve exactly the evidence that disproves completion. Keeping source text visible, adding a limited negation warning and requiring human selection became central to the workflow. Handling ambiguous PayPal responses also required preserving uncertainty instead of returning an invented success.
 
-## A result that changed the design
-An actual model run gave a similarity of 0.9687 to a statement that negated the requested behavior. Similarity was useful for finding the relevant excerpt, but insufficient for accepting the work. The final workflow makes that distinction visible and reserves acceptance for a person.
+## Accomplishments
+A separate USD 1.00 API test completed actual local inference, OAuth 200, draft creation 201 and read-back 200, verifying the expected line item and DRAFT status. Its sanitized receipt is in `receipts/sandbox-check.json`.
 
-## Current limitations
-The three-milestone UI is a prototype. Contradiction detection is only a word heuristic. Review and deduplication state are not durable across server restarts. The recorded Edge scenario covered analysis, human selection, the displayed Sandbox draft result and invalidation after an edit. Full keyboard and screen-reader accessibility remain unverified. A hosted demonstration and public video remain absent; local setup instructions are in the repository.
+The public 2:18 video shows real local analysis, selection of one synthetic parser milestone, a displayed PayPal Sandbox DRAFT for USD 180.00, and selection resetting after a criterion edit while the existing draft remains unchanged. Provider HTTP statuses were not independently captured for this UI scenario; they belong to the separate USD 1.00 test. Neither draft is revenue.
 
-Public source repository: https://github.com/SSH-PuR66/scopeproof (MIT). This publication does not constitute a contest entry.
+## What I learned
+Semantic relevance and completed work are different claims. AI helps locate the excerpt; the reviewer needs the original wording and an explicit decision. The invoice must reflect the reviewed data, and an uncertain provider response must remain uncertain until reconciled.
 
-## Demonstration plan — under three minutes
-1. Show three synthetic milestones: a supported parser delivery, unfinished receipt export and missing accessibility review.
-2. Run real local semantic matching and inspect the original excerpts.
-3. Explain why a high similarity score can still mean unfinished work.
-4. Select only a milestone supported by the demonstrated evidence.
-5. With configured sandbox credentials, create one Sandbox draft and show its returned DRAFT status, total and source, with the draft identifier and recipient redacted. Do not record fixture output as a real API response.
-6. End with the actual tests and limitations. Record functioning UI footage; this outline is not a video.
+## What's next
+Validate the workflow with freelancers, add durable review and reconciliation storage, and complete keyboard and screen-reader testing before considering production use. The current three-milestone UI is a prototype. Negation detection is a small English word heuristic, model input can be truncated, and duplicate prevention does not survive a restart. There is no hosted application; the repository provides local setup. No customer adoption, time savings, award or revenue is claimed.
 
-## Unresolved entry fields
-Participant eligibility and required attestations; public YouTube video URL and functioning visual demonstration. No fields should be represented as complete without evidence.
+## Built with
+JavaScript, Node.js, HTML, CSS, Hugging Face Transformers.js, Xenova/all-MiniLM-L6-v2, PayPal Invoicing API, PayPal Sandbox.
+
+## Entry status — not part of the project story
+The video and source repository are public. The participant supplied solo-entry, conflict-of-interest and material-rights confirmations; these are self-reports, not organizer approval. Devpost sign-in and the actual form remain unfinished. Final contest terms have not been accepted, and the entry has not been submitted.

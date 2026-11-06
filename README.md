@@ -4,6 +4,8 @@
 
 Source repository: [SSH-PuR66/scopeproof](https://github.com/SSH-PuR66/scopeproof), published under MIT. Repository publication is not a hackathon entry or an award.
 
+Public demonstration: [ScopeProof — evidence to invoice, with human review](https://youtu.be/LAmobU_wShs) (2:18, English captions, synthetic examples). The video is public; the Devpost entry has not been submitted.
+
 ScopeProof ranks supplied evidence excerpts against each milestone using a real MiniLM embedding model on your CPU. It displays the original text, similarity and a simple contradiction warning. You decide which milestones to include. The server builds a PayPal Sandbox invoice only from the reviewed snapshot and your explicit selection, then reads the invoice back to verify status, line items and amount.
 
 ## Run
@@ -29,7 +31,7 @@ For PayPal Sandbox, copy `.env.example` to `.env`, set `PAYPAL_MODE=paypal-sandb
 
 A real Sandbox round trip was verified on November 5, 2026: OAuth returned 200, one draft creation returned 201, and its read-back returned 200. The checked draft remained `DRAFT`, with the expected line item and USD 1.00 total. Actual local MiniLM inference ran in the same check. See the [sanitized integration receipt](receipts/sandbox-check.json), which identifies the tested source commit. The invoice was not sent or paid. This verifies that configured Sandbox account and test case, not every account or production deployment.
 
-A separate recorded Edge walkthrough showed real analysis, selection of the synthetic parser milestone, and a `paypal-sandbox` result with `DRAFT` status and USD 180.00 total. A later criterion edit cleared the selection and invalidated the review without changing the existing draft. Provider HTTP statuses were not independently captured for that UI scenario; the one-dollar API receipt is separate evidence. The video is being prepared for public release. No money moved in either case.
+A separate [public Edge walkthrough](https://youtu.be/LAmobU_wShs) shows real analysis, selection of the synthetic parser milestone, and a `paypal-sandbox` result with `DRAFT` status and USD 180.00 total. A later criterion edit cleared the selection and invalidated the review without changing the existing draft. Provider HTTP statuses were not independently captured for that UI scenario; the one-dollar API receipt is separate evidence. No money moved in either case.
 
 ## What the AI can and cannot establish
 
@@ -49,7 +51,7 @@ If a Sandbox create/read-back result is ambiguous, that key is held as `UNKNOWN`
 - `npm run check:ai`: actual pinned MiniLM inference, exact-source retrieval and a negation counterexample; writes `receipts/ai-check.json`.
 - The recorded Edge scenario covers the demonstrated analysis, selection, Sandbox draft result and input-edit invalidation. It does not establish complete keyboard or screen-reader accessibility, which remain unverified.
 - A real Sandbox API create/read-back has passed in the separate one-dollar case; provider request counts and statuses are not independently established by the UI recording.
-- Submission remains pending: participant eligibility, public functioning demonstration video and final entry. No credentials are included in this package.
+- The public functioning demonstration video is available. The participant has supplied solo-entry, conflict-of-interest and material-rights confirmations; these are self-reports, not an organizer eligibility decision. Devpost sign-in, the final form and acceptance of the contest terms remain pending. No entry or award is claimed, and no credentials are included in this package.
 
 ## Sources and licenses
 
